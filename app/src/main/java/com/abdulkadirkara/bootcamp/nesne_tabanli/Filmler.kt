@@ -1,6 +1,6 @@
 package com.abdulkadirkara.bootcamp.nesne_tabanli
 
-class Filmler(var id: Int, var ad: String, var fiyat: Double) {
+data class Filmler(var id: Int, var ad: String, var fiyat: Double) {
 
     init {
         println("Filmler sınıfından nesnesi oluşturuldu")
