@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Bootcamp"
 include(":app")
- 
+include(":app:module2")
