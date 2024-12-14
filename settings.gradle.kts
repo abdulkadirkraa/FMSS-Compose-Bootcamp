@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "Bootcamp"
 include(":app")
 include(":app:module2")
+include(":app:module3")
+include(":app:odev3")
