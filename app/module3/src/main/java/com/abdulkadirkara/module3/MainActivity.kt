@@ -1,17 +1,19 @@
-package com.abdulkadirkara.odev3
+package com.abdulkadirkara.module3
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.abdulkadirkara.odev3.ui.screens.BottomBarScreen
-import com.abdulkadirkara.odev3.ui.theme.BootcampTheme
+import androidx.activity.enableEdgeToEdge
+import com.abdulkadirkara.module3.ui.screens.SayfaGecisleri
+import com.abdulkadirkara.module3.ui.theme.BootcampTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             BootcampTheme {
-                BottomBarScreen()
+                SayfaGecisleri("anasayfa")
             }
         }
     }

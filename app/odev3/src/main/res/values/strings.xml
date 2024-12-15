@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">odev3</string>
+    <string name="hi_user">Hi, Kadir</string>
+    <string name="order_and_eat">Order &amp; Eat</string>
+    <string name="search_hint">Find your favorite foods</string>
+    <string name="free_delivery">Free delivery</string>
+    <string name="delivery_dates">May 2 - June 10</string>
+    <string name="order_now">Order Now</string>
+    <string name="categories">Categories</string>
+    <string name="popular">Popular</string>
+    <string name="see_all">See all</string>
+    <string name="add_button">+ Add</string>
+    <string name="currency_symbol">$</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="shopping_card">Shopping Card</string>
+    <string name="notification">Notification</string>
+    <string name="settings">Settings</string>
+
 </resources>

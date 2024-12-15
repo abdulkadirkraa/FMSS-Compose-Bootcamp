@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">odev3</string>
+    <string name="hi_user">Merhaba, Kadir</string>
+    <string name="order_and_eat">Sipariş Ver ve Ye</string>
+    <string name="search_hint">Favori yemeklerinizi bulun</string>
+    <string name="free_delivery">Ücretsiz Teslimat</string>
+    <string name="delivery_dates">2 Mayıs - 10 Haziran</string>
+    <string name="order_now">Şimdi Sipariş Ver</string>
+    <string name="categories">Kategoriler</string>
+    <string name="popular">Popüler</string>
+    <string name="see_all">Hepsini gör</string>
+    <string name="add_button">+ Ekle</string>
+    <string name="currency_symbol">₺</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="profile">Profil</string>
+    <string name="shopping_card">Sepet</string>
+    <string name="notification">Bildirimler</string>
+    <string name="settings">Ayarlar</string>
+</resources>

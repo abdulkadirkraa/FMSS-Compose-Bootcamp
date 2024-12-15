@@ -12,9 +12,10 @@ val Pink40 = Color(0xFF7D5260)
 
 //Ana Renklerim
 val orange = Color(0xFFFF3D00)
-val btnOrange = Color(0xFFFF7043)
+val cardOrange = Color(0xFFFFA500)
 val grey = Color(0xFFECECEC)
 
 //Dark Theme Renklerim
 val darkOrange = Color(0xFFD9D5D4)
-val darkGrey = Color(0xFFEAD4D4)
+val darkCardOrange = Color(0xFFD9D5D4)
+val darkGrey = Color(0xFF656565)

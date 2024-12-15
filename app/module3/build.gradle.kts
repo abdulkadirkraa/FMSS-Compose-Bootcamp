@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.abdulkadirkara.odev3"
+    namespace = "com.abdulkadirkara.module3"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.abdulkadirkara.odev3"
+        applicationId = "com.abdulkadirkara.module3"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -67,6 +67,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation("com.airbnb.android:lottie-compose:6.3.0")
+    //Navigation
     implementation("androidx.navigation:navigation-compose:2.7.6")
 }
