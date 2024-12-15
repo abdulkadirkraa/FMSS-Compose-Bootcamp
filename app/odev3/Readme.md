@@ -1,0 +1,3 @@
+| **Koyu Tema & Türkçe**             | **Koyu Tema & İngilizce**        | **Açık Tema & Türkçe**          | **Açık Tema & İngilizce**         |
+|------------------------------------|-----------------------------------|----------------------------------|-----------------------------------|
+| ![o3 4](https://github.com/user-attachments/assets/d29125b7-74bb-4b25-a011-44eb13e06dac)| ![o3 2](https://github.com/user-attachments/assets/8a7a92b2-d26e-45e3-9470-b2f9b0be72c1)| ![o3 3](https://github.com/user-attachments/assets/0cf07ed4-9d32-4ddc-be1e-dfa39cca7eed) | ![o3 1](https://github.com/user-attachments/assets/00a63359-0f04-4cc7-bf0f-3aa5c7283781)|
