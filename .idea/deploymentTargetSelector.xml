@@ -54,14 +54,17 @@
       </SelectionState>
       <SelectionState runConfigName="app.module4">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-17T18:52:57.092223900Z">
+        <DropdownSelection timestamp="2024-12-18T10:22:35.258335900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Vizyon\.android\avd\Pixel_4_API_35.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Vizyon\.android\avd\Pixel_4_API_34.avd" />
             </handle>
           </Target>
         </DropdownSelection>
         <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="app.module5">
+        <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
   </component>
