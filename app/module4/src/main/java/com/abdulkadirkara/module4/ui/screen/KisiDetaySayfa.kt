@@ -27,10 +27,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.abdulkadirkara.module4.data.entitiy.Kisiler
+import com.abdulkadirkara.module4.ui.viewmodel.KisiDetayViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun KisiDetaySayfa(gelenKisi: Kisiler){
+fun KisiDetaySayfa(gelenKisi: Kisiler, viewModel : KisiDetayViewModel){
     val textFieldKisiAd = remember { mutableStateOf("") }
     val textFieldKisiTel = remember { mutableStateOf("") }
     val context = LocalContext.current

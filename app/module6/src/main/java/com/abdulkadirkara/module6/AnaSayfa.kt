@@ -10,6 +10,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -18,22 +19,20 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun AnaSayfa(){
+fun AnaSayfa(anasafaViewModel: AnaSayfaViewModel){
     val textFieldSayi1 = remember {
         mutableStateOf("")
     }
     val textFieldSayi2 = remember {
         mutableStateOf("")
     }
-    val sonuc = remember {
-        mutableStateOf("0")
-    }
+    val sonuc = anasafaViewModel.sonuc.observeAsState()
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = sonuc.value, fontSize = 40.sp)
+        sonuc.value?.let { Text(text = it, fontSize = 40.sp) }
         TextField(
             value = textFieldSayi1.value,
             onValueChange = { textFieldSayi1.value = it },
@@ -51,35 +50,22 @@ fun AnaSayfa(){
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             Button(onClick = {
-                val alinanSayi1 = textFieldSayi1.value
-                val alinanSayi2 = textFieldSayi2.value
-                sonuc.value = (alinanSayi1.toInt() + alinanSayi2.toInt()).toString()
+                anasafaViewModel.toplamaYap(textFieldSayi1.value,textFieldSayi2.value)
             }) {
                 Text(text = "+")
             }
             Button(onClick = {
-                val alinanSayi1 = textFieldSayi1.value
-                val alinanSayi2 = textFieldSayi2.value
-                sonuc.value = (alinanSayi1.toInt() - alinanSayi2.toInt()).toString()
+                anasafaViewModel.cikarmaYap(textFieldSayi1.value,textFieldSayi2.value)
             }) {
                 Text(text = "-")
             }
             Button(onClick = {
-                val alinanSayi1 = textFieldSayi1.value
-                val alinanSayi2 = textFieldSayi2.value
-                sonuc.value = (alinanSayi1.toInt() * alinanSayi2.toInt()).toString()
+                anasafaViewModel.carpmaYap(textFieldSayi1.value,textFieldSayi2.value)
             }) {
                 Text(text = "*")
             }
             Button(onClick = {
-                val alinanSayi1 = textFieldSayi1.value
-                val alinanSayi2 = textFieldSayi2.value
-                if (alinanSayi2 != "0") {
-                    sonuc.value = (alinanSayi1.toInt() / alinanSayi2.toInt()).toString()
-                } else {
-                    sonuc.value = "Hata 0'a bölünmez!"
-                }
-
+                anasafaViewModel.bolmeYap(textFieldSayi1.value,textFieldSayi2.value)
             }) {
                 Text(text = "/")
             }

@@ -43,12 +43,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.abdulkadirkara.module4.data.entitiy.Kisiler
+import com.abdulkadirkara.module4.ui.viewmodel.AnaSayfaViewModel
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AnaSayfa(navController: NavController){
+fun AnaSayfa(navController: NavController, viewModel: AnaSayfaViewModel) {
     val aramaYapiliyorMu = remember { mutableStateOf(false) }
     val textFieldAra = remember { mutableStateOf("") }
     val kisilerListesi = remember { mutableStateListOf<Kisiler>() }

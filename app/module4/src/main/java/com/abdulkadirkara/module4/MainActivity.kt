@@ -4,23 +4,27 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.activity.viewModels
 import com.abdulkadirkara.module4.ui.screen.SayfaGecisleri
 import com.abdulkadirkara.module4.ui.theme.BootcampTheme
+import com.abdulkadirkara.module4.ui.viewmodel.AnaSayfaViewModel
+import com.abdulkadirkara.module4.ui.viewmodel.KisiDetayViewModel
+import com.abdulkadirkara.module4.ui.viewmodel.KisiKayitViewModel
 
 class MainActivity : ComponentActivity() {
+    private val anasayfaViewModel : AnaSayfaViewModel by viewModels()
+    private val kisiKayitViewModel : KisiKayitViewModel by viewModels()
+    private val kisiDetayViewModel : KisiDetayViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             BootcampTheme {
-                SayfaGecisleri()
+                SayfaGecisleri(
+                    anasayfaViewModel,
+                    kisiKayitViewModel,
+                    kisiDetayViewModel
+                )
             }
         }
     }

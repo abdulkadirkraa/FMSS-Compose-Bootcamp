@@ -26,10 +26,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.abdulkadirkara.module4.ui.viewmodel.KisiKayitViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun KisiKayitSayfa(navController: NavController){
+fun KisiKayitSayfa(navController: NavController, viewmodel : KisiKayitViewModel){
     val textFieldKisiAd = remember { mutableStateOf("") }
     val textFieldKisiTel = remember { mutableStateOf("") }
     val context = LocalContext.current
