@@ -10,7 +10,9 @@ import com.abdulkadirkara.module4.ui.theme.BootcampTheme
 import com.abdulkadirkara.module4.ui.viewmodel.AnaSayfaViewModel
 import com.abdulkadirkara.module4.ui.viewmodel.KisiDetayViewModel
 import com.abdulkadirkara.module4.ui.viewmodel.KisiKayitViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val anasayfaViewModel : AnaSayfaViewModel by viewModels()
     private val kisiKayitViewModel : KisiKayitViewModel by viewModels()

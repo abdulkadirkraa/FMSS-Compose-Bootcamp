@@ -32,6 +32,7 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -52,24 +53,9 @@ import kotlinx.coroutines.launch
 fun AnaSayfa(navController: NavController, viewModel: AnaSayfaViewModel) {
     val aramaYapiliyorMu = remember { mutableStateOf(false) }
     val textFieldAra = remember { mutableStateOf("") }
-    val kisilerListesi = remember { mutableStateListOf<Kisiler>() }
+    val kisilerListesi = viewModel.kisilerListesi.observeAsState()
     val scope = rememberCoroutineScope()//görüntelenmeyi sağlayacağımız yapı
     val snackbarHostState = remember { SnackbarHostState() }
-
-    LaunchedEffect(key1 = true) {
-        kisilerListesi.add(Kisiler(1, "Ahmet", "123"))
-        kisilerListesi.add(Kisiler(2, "Mehmet", "987"))
-        kisilerListesi.add(Kisiler(3, "Ali", "111"))
-        kisilerListesi.add(Kisiler(4, "Veli", "222"))
-        kisilerListesi.add(Kisiler(5, "Can", "333"))
-        kisilerListesi.add(Kisiler(6, "Canan", "444"))
-        kisilerListesi.add(Kisiler(7, "Cem", "555"))
-        kisilerListesi.add(Kisiler(8, "Ayşe", "666"))
-        kisilerListesi.add(Kisiler(9, "Fatma", "777"))
-        kisilerListesi.add(Kisiler(10, "Zeynep", "888"))
-        kisilerListesi.add(Kisiler(11, "Hülya", "999"))
-        kisilerListesi.add(Kisiler(12, "Aleyna", "000"))
-    }
 
     Scaffold(
         topBar = {
@@ -80,7 +66,7 @@ fun AnaSayfa(navController: NavController, viewModel: AnaSayfaViewModel) {
                             value = textFieldAra.value,
                             onValueChange = {
                                 textFieldAra.value = it
-                                ara(it)
+                                viewModel.ara(it)
                             },
                             label = { Text(text = "Ara") },
                             colors = TextFieldDefaults.textFieldColors(
@@ -127,52 +113,47 @@ fun AnaSayfa(navController: NavController, viewModel: AnaSayfaViewModel) {
     ) { paddingValues ->
         LazyColumn(modifier = Modifier.fillMaxSize()
             .padding(paddingValues)) {
-            items(
-                count = kisilerListesi.count(),
-                itemContent ={//burdaki it indexleri vericez
-                    val kisi = kisilerListesi[it]
-                    Card(modifier = Modifier.padding(5.dp),
-                        shape = RoundedCornerShape(10.dp)
-                    ) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth().clickable {
-                                val kisiJson = Gson().toJson(kisi)
-                                navController.navigate("kisiDetaySayfa/${kisiJson}")
-                            },
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween
+            kisilerListesi.value?.let {
+                items(
+                    count = it.count(),
+                    itemContent ={//burdaki it indexleri vericez
+                        val kisi = kisilerListesi.value!![it]
+                        Card(modifier = Modifier.padding(5.dp),
+                            shape = RoundedCornerShape(10.dp)
                         ) {
-                            Column(modifier = Modifier.padding(10.dp)) {
-                                Text(text = kisi.kisi_ad, fontSize = 24.sp)
-                                Text(text = kisi.kisi_tel)
-                            }
-                            IconButton(onClick = {
-                                scope.launch {
-                                    val snackbar = snackbarHostState.showSnackbar(
-                                        message = "${kisi.kisi_ad} silinsin mi?",
-                                        actionLabel = "Evet"
-                                    )
-                                    if (snackbar == SnackbarResult.ActionPerformed) {//Snackbar action oldu mu tıklanıldı mı
-                                        sil(kisi.kisi_id)
-                                    }
+                            Row(
+                                modifier = Modifier.fillMaxWidth().clickable {
+                                    val kisiJson = Gson().toJson(kisi)
+                                    navController.navigate("kisiDetaySayfa/${kisiJson}")
+                                },
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Column(modifier = Modifier.padding(10.dp)) {
+                                    Text(text = kisi.kisi_ad, fontSize = 24.sp)
+                                    Text(text = kisi.kisi_tel)
                                 }
-                            }) {
-                                Icon(Icons.Rounded.Close, contentDescription = "",
-                                    tint = Color.Gray
-                                )
+                                IconButton(onClick = {
+                                    scope.launch {
+                                        val snackbar = snackbarHostState.showSnackbar(
+                                            message = "${kisi.kisi_ad} silinsin mi?",
+                                            actionLabel = "Evet"
+                                        )
+                                        if (snackbar == SnackbarResult.ActionPerformed) {//Snackbar action oldu mu tıklanıldı mı
+                                            viewModel.sil(kisi.kisi_id)
+                                        }
+                                    }
+                                }) {
+                                    Icon(Icons.Rounded.Close, contentDescription = "",
+                                        tint = Color.Gray
+                                    )
+                                }
                             }
                         }
                     }
-                }
-            )
+                )
+            }
         }
 
     }
-}
-
-fun ara(aramaKelimesi: String){
-    Log.e("Kisi Ara", aramaKelimesi)
-}
-fun sil(kisi_id: Int){
-
 }

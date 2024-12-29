@@ -33,7 +33,6 @@ import com.abdulkadirkara.module4.ui.viewmodel.KisiKayitViewModel
 fun KisiKayitSayfa(navController: NavController, viewmodel : KisiKayitViewModel){
     val textFieldKisiAd = remember { mutableStateOf("") }
     val textFieldKisiTel = remember { mutableStateOf("") }
-    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(
@@ -59,7 +58,7 @@ fun KisiKayitSayfa(navController: NavController, viewmodel : KisiKayitViewModel)
              )
             Button(modifier = Modifier.size(width = 250.dp, height = 50.dp),
                 onClick = {
-                    kaydet(textFieldKisiAd.value, textFieldKisiTel.value, context = context)
+                    viewmodel.kaydet(textFieldKisiAd.value, textFieldKisiTel.value)
                     navController.popBackStack()
             }) {
                 Text(text = "Kaydet")
@@ -67,8 +66,4 @@ fun KisiKayitSayfa(navController: NavController, viewmodel : KisiKayitViewModel)
         }
 
     }
-}
-
-fun kaydet(kisi_ad: String, kisi_tel: String, context: Context){
-    Toast.makeText(context, "$kisi_ad - $kisi_tel", Toast.LENGTH_SHORT).show()
 }

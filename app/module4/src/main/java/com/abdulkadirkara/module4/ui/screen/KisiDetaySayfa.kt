@@ -34,7 +34,6 @@ import com.abdulkadirkara.module4.ui.viewmodel.KisiDetayViewModel
 fun KisiDetaySayfa(gelenKisi: Kisiler, viewModel : KisiDetayViewModel){
     val textFieldKisiAd = remember { mutableStateOf("") }
     val textFieldKisiTel = remember { mutableStateOf("") }
-    val context = LocalContext.current
 
     LaunchedEffect(key1 = true) {
         textFieldKisiAd.value = gelenKisi.kisi_ad
@@ -66,15 +65,11 @@ fun KisiDetaySayfa(gelenKisi: Kisiler, viewModel : KisiDetayViewModel){
             )
             Button(modifier = Modifier.size(width = 250.dp, height = 50.dp),
                 onClick = {
-                    guncelle(gelenKisi.kisi_id, textFieldKisiAd.value, textFieldKisiTel.value, context = context)
+                    viewModel.guncelle(gelenKisi.kisi_id, textFieldKisiAd.value, textFieldKisiTel.value)
                 }) {
                 Text(text = "Güncelle")
             }
         }
 
     }
-}
-
-fun guncelle(kisi_id:Int, kisi_ad: String, kisi_tel: String, context: Context){
-    Toast.makeText(context, "$kisi_id: $kisi_ad - $kisi_tel", Toast.LENGTH_SHORT).show()
 }
